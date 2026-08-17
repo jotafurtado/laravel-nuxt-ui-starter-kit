@@ -1,6 +1,6 @@
 # Laravel Nuxt UI Starter Kit
 
-A production-ready Laravel 12 starter kit with Vue 3, Inertia.js v2, Nuxt UI components, and Tailwind CSS v4. Built for developers who want to start their next web application with modern tools and best practices already configured.
+A production-ready Laravel 13 starter kit with Vue 3, Inertia.js v3, Nuxt UI components, and Tailwind CSS v4. Built for developers who want to start their next web application with modern tools and best practices already configured.
 
 ## Why Use This Starter Kit?
 
@@ -10,7 +10,7 @@ Skip the repetitive setup and start building features immediately. This starter 
 - **Best Practices**: Modern architecture patterns and coding standards built-in
 - **Full Authentication**: Complete auth system you can customize or use as-is
 - **Beautiful UI**: Nuxt UI component library with Tailwind CSS v4
-- **Type Safety**: TypeScript on frontend, PHP 8.2+ with strict types on backend
+- **Type Safety**: TypeScript on frontend, PHP 8.4+ with strict types on backend
 - **Developer Tools**: Testing, linting, formatting, and quality checks ready to go
 - **Example Code**: Reference implementations for common patterns
 
@@ -20,7 +20,7 @@ Perfect for MVPs, SaaS applications, internal tools, or any Laravel project need
 
 ### Via Laravel Installer
 
-You may create a new project using the [Laravel installer](https://laravel.com/docs/12.x/installation#creating-a-laravel-project):
+You may create a new project using the [Laravel installer](https://laravel.com/docs/13.x/installation#creating-a-laravel-project):
 
 ```bash
 laravel new my-app --using=jkque/laravel-nuxt-ui-starter-kit
@@ -92,7 +92,7 @@ This starter kit comes with everything you need to build modern web applications
 
 ### Frontend Stack
 - **Vue 3** with TypeScript support
-- **Inertia.js v2** for seamless SPA experience without API complexity
+- **Inertia.js v3** for seamless SPA experience without API complexity
 - **Nuxt UI** component library for beautiful, accessible UI components
 - **Tailwind CSS v4** for utility-first styling
 - **Lucide Vue** icons
@@ -108,7 +108,7 @@ This starter kit comes with everything you need to build modern web applications
 - Complete authentication flow pages
 
 ### Backend Features
-- **Laravel 12** with modern PHP 8.2+ features
+- **Laravel 13** with modern PHP 8.3+ features
 - **Laravel Wayfinder** for type-safe routing between Laravel and Vue
 - **Laravel Horizon** for queue monitoring and management
 - **Database queue driver** configured by default
@@ -424,16 +424,16 @@ npm run format:check
 ## Technology Stack
 
 ### Backend
-- Laravel 12
-- PHP 8.2+
-- Inertia.js Laravel adapter v2
+- Laravel 13
+- PHP 8.4+
+- Inertia.js Laravel adapter v3
 - Laravel Fortify (authentication)
 - Laravel Horizon (queue monitoring)
 - Laravel Wayfinder (routing)
 
 ### Frontend
 - Vue 3
-- Inertia.js v2
+- Inertia.js v3
 - Tailwind CSS v4
 - Nuxt UI (component library)
 - TypeScript
@@ -480,7 +480,7 @@ Key environment variables to configure:
 APP_NAME=Laravel
 APP_ENV=local
 APP_DEBUG=true
-APP_URL=http://localhost
+APP_URL=http://localhost:8000
 
 # Database
 DB_CONNECTION=sqlite
@@ -491,7 +491,12 @@ CACHE_STORE=database
 QUEUE_CONNECTION=database
 
 # Mail
-MAIL_MAILER=log
+MAIL_MAILER=smtp
+MAIL_SCHEME=null
+MAIL_HOST=127.0.0.1
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
 ```
 
 ## Troubleshooting
