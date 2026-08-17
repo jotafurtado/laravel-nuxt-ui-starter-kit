@@ -135,7 +135,6 @@
 </script>
 
 <template>
-  <Suspense>
     <UApp>
       <UDashboardGroup unit="rem" storage="local">
         <UDashboardSidebar
@@ -170,5 +169,4 @@
         <NotificationsSlideover />
       </UDashboardGroup>
     </UApp>
-  </Suspense>
 </template>
