@@ -16,6 +16,9 @@ parameters:
 
     level: 5
 
+    configDirectories:
+        - config
+
     tmpDir: /tmp/phpstan
 
     universalObjectCratesClasses:
