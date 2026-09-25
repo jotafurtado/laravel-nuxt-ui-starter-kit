@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import Layout from '@/layouts/Default.vue'
   import type { TableColumn } from '@nuxt/ui'
-  import { getPaginationRowModel, type Row } from '@tanstack/table-core'
+  import { getPaginationRowModel, type Column, type Row } from '@tanstack/table-core'
   import { useFetch } from '@vueuse/core'
   import { upperFirst } from 'scule'
   import { h, ref, resolveComponent, useTemplateRef, watch } from 'vue'
@@ -249,8 +249,8 @@
             :items="
               table?.tableApi
                 ?.getAllColumns()
-                .filter((column: any) => column.getCanHide())
-                .map((column: any) => ({
+                .filter((column: Column<User>) => column.getCanHide())
+                .map((column: Column<User>) => ({
                   label: upperFirst(column.id),
                   type: 'checkbox' as const,
                   checked: column.getIsVisible(),
