@@ -1,7 +1,8 @@
 <script setup lang="ts">
   import type { NavigationMenuItem } from '@nuxt/ui'
 
-  const { url } = usePage()
+  const page = usePage()
+  const repositoryUrl = 'https://github.com/jotafurtado/laravel-nuxt-ui-starter-kit'
   const toast = useToast()
 
   const open = ref(false)
@@ -74,15 +75,15 @@
     ],
     [
       {
-        label: 'Feedback',
-        icon: 'i-lucide-message-circle',
-        to: 'https://github.com/nuxt-ui-pro/dashboard-vue',
+        label: 'Source code',
+        icon: 'i-simple-icons-github',
+        to: repositoryUrl,
         target: '_blank',
       },
       {
-        label: 'Help & Support',
-        icon: 'i-lucide-info',
-        to: 'https://github.com/nuxt/ui-pro',
+        label: 'Nuxt UI docs',
+        icon: 'i-lucide-book-open',
+        to: 'https://ui.nuxt.com/docs/getting-started',
         target: '_blank',
       },
     ],
@@ -102,7 +103,7 @@
           id: 'source',
           label: 'View page source',
           icon: 'simple-icons:github',
-          to: `https://github.com/nuxt-ui-pro/dashboard-vue/blob/main/src/pages${url === '/' ? '/index' : url}.vue`,
+          to: `${repositoryUrl}/blob/main/resources/js/pages/${page.component}.vue`,
           target: '_blank',
         },
       ],
