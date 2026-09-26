@@ -34,6 +34,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Horizon Allowed Emails
+    |--------------------------------------------------------------------------
+    |
+    | Comma separated list of user emails allowed to access the Horizon
+    | dashboard in non-local environments (HORIZON_ALLOWED_EMAILS).
+    |
+    */
+
+    'allowed_emails' => array_values(array_filter(array_map(
+        static fn (string $email): string => Str::lower(trim($email)),
+        explode(',', (string) env('HORIZON_ALLOWED_EMAILS', '')),
+    ))),
+
+    /*
+    |--------------------------------------------------------------------------
     | Horizon Redis Connection
     |--------------------------------------------------------------------------
     |

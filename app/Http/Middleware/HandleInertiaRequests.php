@@ -3,13 +3,10 @@
 namespace App\Http\Middleware;
 
 use App\Http\Resources\UserResource;
-use Illuminate\Foundation\Inspiring;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
 use function config;
-use function str;
-use function trim;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -41,12 +38,9 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        [$message, $author] = str(Inspiring::quotes()->random())->explode('-');
-
         return [
             ...parent::share($request),
             'name' => config('app.name'),
-            'quote' => ['message' => trim((string) $message), 'author' => trim((string) $author)],
             'auth' => [
                 'user' => $request->user() ? new UserResource($request->user())->resolve() : null,
             ],

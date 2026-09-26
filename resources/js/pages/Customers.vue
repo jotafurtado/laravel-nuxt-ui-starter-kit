@@ -2,10 +2,9 @@
   import Layout from '@/layouts/Default.vue'
   import type { TableColumn } from '@nuxt/ui'
   import { getPaginationRowModel, type Column, type Row } from '@tanstack/table-core'
-  import { useFetch } from '@vueuse/core'
   import { upperFirst } from 'scule'
   import { h, ref, resolveComponent, useTemplateRef, watch } from 'vue'
-  import type { User } from '../types'
+  import type { Customer } from '../types'
 
   defineOptions({ layout: Layout })
 
@@ -27,9 +26,11 @@
   const columnVisibility = ref()
   const rowSelection = ref({ 1: true })
 
-  const { data, isFetching } = useFetch('https://dashboard-template.nuxt.dev/api/customers', { initialData: [] }).json<User[]>()
+  const props = defineProps<{
+    customers: Customer[]
+  }>()
 
-  function getRowItems(row: Row<User>) {
+  function getRowItems(row: Row<Customer>) {
     return [
       {
         type: 'label',
@@ -74,7 +75,7 @@
     ]
   }
 
-  const columns: TableColumn<User>[] = [
+  const columns: TableColumn<Customer>[] = [
     {
       id: 'select',
       header: ({ table }) =>
@@ -100,7 +101,7 @@
       cell: ({ row }) => {
         return h('div', { class: 'flex items-center gap-3' }, [
           h(UAvatar, {
-            ...row.original.avatar,
+            alt: row.original.name,
             size: 'lg',
           }),
           h('div', undefined, [h('p', { class: 'font-medium text-highlighted' }, row.original.name), h('p', { class: '' }, `@${row.original.name}`)]),
@@ -249,8 +250,8 @@
             :items="
               table?.tableApi
                 ?.getAllColumns()
-                .filter((column: Column<User>) => column.getCanHide())
-                .map((column: Column<User>) => ({
+                .filter((column: Column<Customer>) => column.getCanHide())
+                .map((column: Column<Customer>) => ({
                   label: upperFirst(column.id),
                   type: 'checkbox' as const,
                   checked: column.getIsVisible(),
@@ -279,9 +280,8 @@
           getPaginationRowModel: getPaginationRowModel(),
         }"
         class="shrink-0"
-        :data="data ?? []"
+        :data="props.customers"
         :columns="columns"
-        :loading="isFetching"
         :ui="{
           base: 'table-fixed border-separate border-spacing-0',
           thead: '[&>tr]:bg-elevated/50 [&>tr]:after:content-none',
