@@ -10,21 +10,18 @@
     {
       label: 'Vue',
       avatar: {
-        src: 'https://github.com/vuejs.png',
         alt: 'Vue',
       },
     },
     {
       label: 'Vite',
       avatar: {
-        src: 'https://github.com/vitejs.png',
         alt: 'Vite',
       },
     },
     {
       label: 'Vitest',
       avatar: {
-        src: 'https://github.com/vitest-dev.png',
         alt: 'Vitest',
       },
     },
