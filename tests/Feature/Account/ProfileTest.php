@@ -9,7 +9,7 @@ test('guests are redirected to the login page', function (): void {
 });
 
 test('authenticated users can see their profile', function (): void {
-    $user = User::factory()->create();
+    $user = User::factory()->withoutTwoFactor()->create();
     $this->actingAs($user);
 
     $response = $this->get('/profile');
@@ -22,11 +22,7 @@ test('authenticated users can see their profile', function (): void {
 });
 
 test('profile shows when two-factor authentication is enabled', function (): void {
-    $user = User::factory()->create([
-        'two_factor_secret' => encrypt('secret'),
-        'two_factor_recovery_codes' => encrypt(json_encode(['code-1'])),
-        'two_factor_confirmed_at' => now(),
-    ]);
+    $user = User::factory()->create();
     $this->actingAs($user);
 
     $response = $this->get('/profile');
