@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Str;
 
 $mysqlSslCaAttribute = defined('Pdo\\Mysql::ATTR_SSL_CA')

@@ -2,6 +2,8 @@
 
 use Rector\Caching\ValueObject\Storage\FileCacheStorage;
 use Rector\Config\RectorConfig;
+use RectorLaravel\Rector\Class_\FillablePropertyToFillableAttributeRector;
+use RectorLaravel\Rector\Class_\HiddenPropertyToHiddenAttributeRector;
 use RectorLaravel\Set\LaravelSetList;
 
 return RectorConfig::configure()
@@ -30,6 +32,11 @@ return RectorConfig::configure()
         __DIR__.'/public',
         __DIR__.'/routes',
         __DIR__.'/tests',
+    ])
+    ->withSkip([
+        // Keep $fillable and $hidden as model properties.
+        FillablePropertyToFillableAttributeRector::class,
+        HiddenPropertyToHiddenAttributeRector::class,
     ])
     ->withPreparedSets(
         deadCode: true,
