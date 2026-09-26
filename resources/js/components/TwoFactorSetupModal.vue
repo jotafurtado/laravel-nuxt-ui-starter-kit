@@ -1,7 +1,6 @@
 <script setup lang="ts">
   import { confirm, enable } from '@/routes/two-factor'
   import { Form } from '@inertiajs/vue3'
-  import { Loader2 } from 'lucide-vue-next'
 
   const props = defineProps<{
     requiresConfirmation: boolean
@@ -103,7 +102,7 @@
                   v-if="!qrCodeSvg"
                   class="absolute inset-0 z-10 flex aspect-square h-auto w-full animate-pulse items-center justify-center bg-default"
                 >
-                  <Loader2 class="size-6 animate-spin" />
+                  <UIcon name="i-lucide-loader-circle" class="size-6 animate-spin" />
                 </div>
                 <div v-else class="relative z-10 overflow-hidden border border-muted p-5">
                   <div v-html="qrCodeSvg" class="flex aspect-square size-full items-center justify-center" />
@@ -125,7 +124,7 @@
             <div class="flex w-full items-center justify-center space-x-2">
               <div class="flex w-full items-stretch">
                 <div v-if="!manualSetupKey" class="flex h-full w-full items-center justify-center bg-default p-3">
-                  <Loader2 class="size-4 animate-spin" />
+                  <UIcon name="i-lucide-loader-circle" class="size-4 animate-spin" />
                 </div>
                 <template v-else>
                   <UInput v-model="manualSetupKey" :ui="{ trailing: 'pr-0.5' }" size="xl" class="w-full">
