@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Settings\MemberController;
 use App\Http\Controllers\Settings\PasswordController;
 use App\Http\Controllers\Settings\ProfileController;
 use App\Http\Controllers\Settings\SecurityController;
@@ -21,7 +22,7 @@ Route::middleware('auth')->group(function (): void {
         ->middleware('throttle:6,1')
         ->name('password.update');
 
-    Route::get('settings/members', fn () => Inertia::render('settings/Members'))->name('members');
+    Route::get('settings/members', MemberController::class)->name('members');
 
     Route::get('settings/notifications', fn () => Inertia::render('settings/Notifications'))->name('notifications');
 });

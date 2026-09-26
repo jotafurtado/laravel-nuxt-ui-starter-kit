@@ -8,15 +8,15 @@ use App\Support\DemoData;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class CustomerController extends Controller
+class InboxController extends Controller
 {
     /**
-     * Show the customers page with local demo data.
+     * Show the inbox page with local demo data.
      */
     public function __invoke(): Response
     {
-        return Inertia::render('Customers', [
-            'customers' => DemoData::customers(),
+        return Inertia::render('Inbox', [
+            'mails' => DemoData::mails(),
         ]);
     }
 }

@@ -79,7 +79,7 @@
 
     <div class="flex flex-col justify-between gap-1 border-b border-default p-4 sm:flex-row sm:px-6">
       <div class="flex items-start gap-4 sm:my-1.5">
-        <UAvatar v-bind="mail.from.avatar" :alt="mail.from.name" size="3xl" />
+        <UAvatar :alt="mail.from.name" size="3xl" />
 
         <div class="min-w-0">
           <p class="font-semibold text-highlighted">

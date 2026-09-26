@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Riley Carter",
+    "username": "riley.carter",
+    "role": "member"
+  },
+  {
+    "name": "Jamie Lee",
+    "username": "jamie.lee",
+    "role": "member"
+  },
+  {
+    "name": "Avery Morgan",
+    "username": "avery.morgan",
+    "role": "owner"
+  },
+  {
+    "name": "Quinn Parker",
+    "username": "quinn.parker",
+    "role": "member"
+  },
+  {
+    "name": "Skyler Hayes",
+    "username": "skyler.hayes",
+    "role": "member"
+  },
+  {
+    "name": "Rowan Bailey",
+    "username": "rowan.bailey",
+    "role": "member"
+  },
+  {
+    "name": "Emerson Reed",
+    "username": "emerson.reed",
+    "role": "member"
+  },
+  {
+    "name": "Finley Brooks",
+    "username": "finley.brooks",
+    "role": "owner"
+  },
+  {
+    "name": "Harper Collins",
+    "username": "harper.collins",
+    "role": "member"
+  },
+  {
+    "name": "Sawyer Price",
+    "username": "sawyer.price",
+    "role": "member"
+  },
+  {
+    "name": "Dakota Ellis",
+    "username": "dakota.ellis",
+    "role": "owner"
+  }
+]

@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import Layout from '@/layouts/Default.vue'
-  import { breakpointsTailwind, useBreakpoints, useFetch } from '@vueuse/core'
+  import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
   import { computed, ref, watch } from 'vue'
   import type { Mail } from '../types'
 
@@ -18,15 +18,17 @@
   ]
   const selectedTab = ref('all')
 
-  const { data: mails } = useFetch('https://dashboard-template.nuxt.dev/api/mails', { initialData: [] }).json<Mail[]>()
+  const props = defineProps<{
+    mails: Mail[]
+  }>()
 
   // Filter mails based on the selected tab
   const filteredMails = computed(() => {
     if (selectedTab.value === 'unread') {
-      return mails.value?.filter((mail) => !!mail.unread) ?? []
+      return props.mails.filter((mail) => !!mail.unread)
     }
 
-    return mails.value ?? []
+    return props.mails
   })
 
   const selectedMail = ref<Mail | null>()
