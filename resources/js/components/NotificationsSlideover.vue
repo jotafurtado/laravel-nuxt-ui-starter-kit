@@ -1,12 +1,19 @@
 <script setup lang="ts">
-  import { formatTimeAgo, useFetch } from '@vueuse/core'
-  import { Link } from '@inertiajs/vue3'
+  import { formatTimeAgo } from '@vueuse/core'
+  import { Link, router, usePage } from '@inertiajs/vue3'
   import { useDashboard } from '../composables/useDashboard'
-  import type { Notification } from '../types'
 
   const { isNotificationsSlideoverOpen } = useDashboard()
 
-  const { data: notifications } = useFetch('https://dashboard-template.nuxt.dev/api/notifications', { initialData: [] }).json<Notification[]>()
+  const page = usePage()
+  const notifications = computed(() => page.props.notifications ?? [])
+
+  // Notifications are an optional shared prop: load them only when the slideover opens
+  watch(isNotificationsSlideoverOpen, (open) => {
+    if (open && !page.props.notifications) {
+      router.reload({ only: ['notifications'] })
+    }
+  })
 </script>
 
 <template>
@@ -19,7 +26,7 @@
         class="relative -mx-3 flex items-center gap-3 rounded-md px-3 py-2.5 first:-mt-3 last:-mb-3 hover:bg-elevated/50"
       >
         <UChip color="error" :show="!!notification.unread" inset>
-          <UAvatar v-bind="notification.sender.avatar" :alt="notification.sender.name" size="md" />
+          <UAvatar :alt="notification.sender.name" size="md" />
         </UChip>
 
         <div class="flex-1 text-sm">

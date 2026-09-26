@@ -2,22 +2,21 @@
   import Layout from '@/layouts/Default.vue'
   import SettingsLayout from '@/layouts/SettingsLayout.vue'
   import { Head } from '@inertiajs/vue3'
-  import { useFetch } from '@vueuse/core'
   import { computed, ref } from 'vue'
   import type { Member } from '../../types'
 
   defineOptions({ layout: Layout })
 
-  const { data: members } = useFetch<Member[]>('https://dashboard-template.nuxt.dev/api/members', { initialData: [] }).json<Member[]>()
+  const props = defineProps<{
+    members: Member[]
+  }>()
 
   const q = ref('')
 
   const filteredMembers = computed(() => {
-    return (
-      members.value?.filter((member) => {
-        return member.name.search(new RegExp(q.value, 'i')) !== -1 || member.username.search(new RegExp(q.value, 'i')) !== -1
-      }) ?? []
-    )
+    return props.members.filter((member) => {
+      return member.name.search(new RegExp(q.value, 'i')) !== -1 || member.username.search(new RegExp(q.value, 'i')) !== -1
+    })
   })
 </script>
 

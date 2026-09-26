@@ -3,7 +3,9 @@
 namespace App\Http\Middleware;
 
 use App\Http\Resources\UserResource;
+use App\Support\DemoData;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 use Inertia\Middleware;
 
 use function config;
@@ -45,6 +47,7 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user() ? new UserResource($request->user())->resolve() : null,
             ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
+            'notifications' => Inertia::optional(DemoData::notifications(...)),
         ];
     }
 }

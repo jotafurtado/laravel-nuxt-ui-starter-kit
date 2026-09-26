@@ -9,6 +9,7 @@ export type AppPageProps<T extends Record<string, unknown> = Record<string, unkn
   quote?: { message: string; author: string }
   auth: Auth
   sidebarOpen: boolean
+  notifications?: Notification[]
 }
 
 export type BreadcrumbItemType = BreadcrumbItem
@@ -36,10 +37,15 @@ export interface User {
   updated_at: string
 }
 
+export interface Person {
+  name: string
+  email: string
+}
+
 export interface Mail {
   id: number
   unread?: boolean
-  from: User
+  from: Person
   subject: string
   body: string
   date: string
@@ -49,7 +55,6 @@ export interface Member {
   name: string
   username: string
   role: 'member' | 'owner'
-  avatar: Avatar
 }
 
 export interface Stat {
@@ -71,7 +76,7 @@ export interface Sale {
 export interface Notification {
   id: number
   unread?: boolean
-  sender: User
+  sender: Person
   body: string
   date: string
 }
