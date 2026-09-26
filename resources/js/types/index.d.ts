@@ -6,7 +6,7 @@ export interface Auth {
 
 export type AppPageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
   name: string
-  quote: { message: string; author: string }
+  quote?: { message: string; author: string }
   auth: Auth
   sidebarOpen: boolean
 }
@@ -15,6 +15,14 @@ export type BreadcrumbItemType = BreadcrumbItem
 
 export type UserStatus = 'subscribed' | 'unsubscribed' | 'bounced'
 export type SaleStatus = 'paid' | 'failed' | 'refunded'
+
+export interface Customer {
+  id: number
+  name: string
+  email: string
+  status: UserStatus
+  location: string
+}
 
 export interface User {
   id: string

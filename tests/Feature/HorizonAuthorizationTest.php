@@ -20,15 +20,13 @@ test('authenticated user cannot view horizon without allowed email', function ()
 });
 
 test('authenticated user with allowed email can view horizon', function (): void {
-    // This test documents the expected behavior when emails are added to the allowed list
-    // Currently the allowed emails list is empty, so this will fail
-    // Once emails are added to the list, this test would pass for those users
+    config(['horizon.allowed_emails' => ['admin@example.com']]);
+
     $user = User::factory()->create([
-        'email' => 'admin@example.com',
+        'email' => 'Admin@Example.com',
     ]);
 
     $canView = Gate::forUser($user)->check('viewHorizon');
 
-    // Since the allowed list is empty, no one can access
-    expect($canView)->toBeFalse();
+    expect($canView)->toBeTrue();
 });

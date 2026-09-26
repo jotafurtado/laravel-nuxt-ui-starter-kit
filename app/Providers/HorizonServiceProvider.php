@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
 use Laravel\Horizon\Horizon;
 use Laravel\Horizon\HorizonApplicationServiceProvider;
 
+use function config;
 use function in_array;
 
 class HorizonServiceProvider extends HorizonApplicationServiceProvider
@@ -35,12 +37,7 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
                 return false;
             }
 
-            /** @var array<string> $allowedEmails */
-            $allowedEmails = [
-                //
-            ];
-
-            return in_array($user->email, $allowedEmails, true);
+            return in_array(Str::lower($user->email), config()->array('horizon.allowed_emails'), true);
         });
     }
 }
