@@ -104,6 +104,7 @@ This starter kit comes with everything you need to build modern web applications
 - Dashboard with example UI
 - Customer management page
 - Inbox interface
+- Account profile and billing pages
 - Settings pages (Profile, Security, Notifications, Members)
 - Complete authentication flow pages
 
@@ -216,6 +217,25 @@ This starter kit is structured to help you build applications quickly:
 - **Routes**: Define routes in `routes/web.php` using Laravel Wayfinder for type-safety
 - **Actions**: Backend actions in `resources/js/actions/`
 - **Composables**: Reusable composition functions in `resources/js/composables/`
+
+### Authentication Layout
+
+All authentication pages (login, register, password reset, email verification, two-factor challenge and password confirmation) render through `resources/js/layouts/AuthLayout.vue`. Two layouts are available:
+
+- `simple` (default): a centered card
+- `split`: a brand panel with an inspiring quote on the left and the form on the right
+
+To switch, change the `AUTH_LAYOUT` constant in `resources/js/layouts/AuthLayout.vue`:
+
+```ts
+const AUTH_LAYOUT: keyof typeof layouts = 'split'
+```
+
+The quote is an optional shared prop (`quote` in `app/Http/Middleware/HandleInertiaRequests.php`), requested with a partial reload only when the split layout is used.
+
+### Demo Data
+
+The customers, inbox, members, notifications and billing pages read local fixtures from `resources/data/*.json` through `App\Support\DemoData`. Replace these calls with your own models when building on top of the kit.
 
 ### Start Development Server
 

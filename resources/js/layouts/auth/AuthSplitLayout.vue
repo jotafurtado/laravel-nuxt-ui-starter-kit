@@ -1,16 +1,24 @@
 <script setup lang="ts">
   import AppLogoIcon from '@/components/AppLogoIcon.vue'
   import { home } from '@/routes'
-  import { Link, usePage } from '@inertiajs/vue3'
+  import { Link, router, usePage } from '@inertiajs/vue3'
 
   const page = usePage()
   const name = page.props.name
-  const quote = page.props.quote
+  const quote = computed(() => page.props.quote)
 
   defineProps<{
     title?: string
     description?: string
+    variant?: 'outline' | 'solid' | 'soft' | 'subtle' | 'naked' | 'ghost'
   }>()
+
+  // The quote is an optional shared prop: only this layout asks for it
+  onMounted(() => {
+    if (!page.props.quote) {
+      router.reload({ only: ['quote'] })
+    }
+  })
 </script>
 
 <template>
@@ -32,7 +40,7 @@
       <div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div class="flex flex-col space-y-2 text-center">
           <h1 class="text-xl font-medium tracking-tight" v-if="title">{{ title }}</h1>
-          <p class="text-muted-foreground text-sm" v-if="description">{{ description }}</p>
+          <p class="text-sm text-muted" v-if="description">{{ description }}</p>
         </div>
         <slot />
       </div>

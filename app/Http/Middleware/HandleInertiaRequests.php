@@ -4,7 +4,9 @@ namespace App\Http\Middleware;
 
 use App\Http\Resources\UserResource;
 use App\Support\DemoData;
+use Illuminate\Foundation\Inspiring;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Middleware;
 
@@ -48,6 +50,22 @@ class HandleInertiaRequests extends Middleware
             ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
             'notifications' => Inertia::optional(DemoData::notifications(...)),
+            'quote' => Inertia::optional($this->quote(...)),
+        ];
+    }
+
+    /**
+     * Pick a random inspiring quote, displayed by the split auth layout.
+     *
+     * @return array{message: string, author: string}
+     */
+    private function quote(): array
+    {
+        $quote = Inspiring::quotes()->random();
+
+        return [
+            'message' => Str::beforeLast($quote, ' - '),
+            'author' => Str::afterLast($quote, ' - '),
         ];
     }
 }

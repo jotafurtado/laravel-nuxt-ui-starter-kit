@@ -87,3 +87,27 @@ export interface Range {
   start: Date
   end: Date
 }
+
+export interface Plan {
+  name: string
+  price: number
+  currency: string
+  interval: 'month' | 'year'
+  features: string[]
+}
+
+export interface PaymentMethod {
+  brand: string
+  last4: string
+  expires: string
+}
+
+export type InvoiceStatus = 'paid' | 'failed'
+
+export interface Invoice {
+  id: string
+  amount: number
+  currency: string
+  status: InvoiceStatus
+  date: string
+}

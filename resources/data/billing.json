@@ -1,0 +1,14 @@
+{
+  "plan": {
+    "name": "Pro",
+    "price": 29,
+    "currency": "USD",
+    "interval": "month",
+    "features": ["Unlimited projects", "Up to 10 team members", "Priority email support", "Advanced analytics"]
+  },
+  "payment_method": {
+    "brand": "Visa",
+    "last4": "4242",
+    "expires": "12/2028"
+  }
+}
