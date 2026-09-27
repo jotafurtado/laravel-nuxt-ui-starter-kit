@@ -1,0 +1,58 @@
+[
+  {
+    "id": "INV-2026012",
+    "amount": 29,
+    "currency": "USD",
+    "status": "paid",
+    "minutes_ago": 4320
+  },
+  {
+    "id": "INV-2026011",
+    "amount": 29,
+    "currency": "USD",
+    "status": "paid",
+    "minutes_ago": 47520
+  },
+  {
+    "id": "INV-2026010",
+    "amount": 29,
+    "currency": "USD",
+    "status": "failed",
+    "minutes_ago": 90720
+  },
+  {
+    "id": "INV-2026009",
+    "amount": 29,
+    "currency": "USD",
+    "status": "paid",
+    "minutes_ago": 133920
+  },
+  {
+    "id": "INV-2026008",
+    "amount": 29,
+    "currency": "USD",
+    "status": "paid",
+    "minutes_ago": 177120
+  },
+  {
+    "id": "INV-2026007",
+    "amount": 29,
+    "currency": "USD",
+    "status": "paid",
+    "minutes_ago": 220320
+  },
+  {
+    "id": "INV-2026006",
+    "amount": 29,
+    "currency": "USD",
+    "status": "paid",
+    "minutes_ago": 263520
+  },
+  {
+    "id": "INV-2026005",
+    "amount": 29,
+    "currency": "USD",
+    "status": "paid",
+    "minutes_ago": 306720
+  }
+]

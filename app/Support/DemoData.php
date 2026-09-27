@@ -48,6 +48,17 @@ class DemoData
     }
 
     /**
+     * @return array<string, mixed>
+     */
+    public static function billing(): array
+    {
+        /** @var array<string, mixed> $billing */
+        $billing = File::json(resource_path('data/billing.json'));
+
+        return [...$billing, 'invoices' => self::withDates(self::load('invoices'))];
+    }
+
+    /**
      * @return list<array<string, mixed>>
      */
     private static function load(string $name): array

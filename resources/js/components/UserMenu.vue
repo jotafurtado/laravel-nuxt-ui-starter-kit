@@ -31,10 +31,12 @@
       {
         label: 'Profile',
         icon: 'i-lucide-user',
+        to: '/profile',
       },
       {
         label: 'Billing',
         icon: 'i-lucide-credit-card',
+        to: '/billing',
       },
       {
         label: 'Settings',
