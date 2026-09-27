@@ -1,0 +1,48 @@
+version: 2
+
+updates:
+  - package-ecosystem: composer
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      composer-minor-patch:
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      npm-minor-patch:
+        update-types:
+          - minor
+          - patch
+    ignore:
+      # @nuxt/ui, reka-ui and motion-v still depend on @vueuse/core 14. Upgrading
+      # only the app would bundle two copies and split useColorMode state.
+      # Revisit when @nuxt/ui moves to @vueuse/core 15.
+      - dependency-name: '@vueuse/core'
+        update-types:
+          - version-update:semver-major
+      # TypeScript 7 (native compiler) drops the JavaScript API that vue-tsc and
+      # typescript-eslint rely on. Revisit when both support it.
+      - dependency-name: typescript
+        update-types:
+          - version-update:semver-major
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    groups:
+      github-actions:
+        patterns:
+          - '*'
