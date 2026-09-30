@@ -32,7 +32,7 @@
   "dependencies": {
     "@inertiajs/vue3": "^3.7.1",
     "@nuxt/ui": "^4.11.2",
-    "@tanstack/table-core": "^8.21.3",
+    "@tanstack/table-core": "^9.2.4",
     "@unovis/vue": "^1.7.0",
     "@vueuse/core": "^14.4.0",
     "date-fns": "^4.4.0",
