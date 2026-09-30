@@ -31,6 +31,11 @@ updates:
       - dependency-name: '@vueuse/core'
         update-types:
           - version-update:semver-major
+      # Must match the @tanstack/vue-table major that @nuxt/ui ships (v8), since
+      # Customers.vue passes table-core helpers to UTable. Revisit with @nuxt/ui.
+      - dependency-name: '@tanstack/table-core'
+        update-types:
+          - version-update:semver-major
       # TypeScript 7 (native compiler) drops the JavaScript API that vue-tsc and
       # typescript-eslint rely on. Revisit when both support it.
       - dependency-name: typescript
