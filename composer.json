@@ -16,7 +16,7 @@
   ],
   "license": "MIT",
   "require": {
-    "php": "^8.4",
+    "php": "^8.4.1",
     "inertiajs/inertia-laravel": "^3.3.4",
     "laravel/fortify": "^1.40",
     "laravel/framework": "^13.33",
@@ -124,6 +124,9 @@
     "allow-plugins": {
       "pestphp/pest-plugin": true,
       "php-http/discovery": true
+    },
+    "platform": {
+      "php": "8.4.1"
     }
   },
   "minimum-stability": "dev",
